@@ -24,7 +24,7 @@ set backspace=indent,eol,start
 
 "remaps esc to jk
 "Insert mode, NOn REcursive MAPping
-inoremap jk <Esc> 
+:inoremap jk <Esc>
 
 set tabstop=4 "number of spaces per TAB
 set softtabstop=4 "same as above, but on editing
@@ -37,6 +37,9 @@ set wildmenu "visual autocomple for command menu
 set showmatch "highlight matching for brackets {[(
 set incsearch "search as characters are entered
 set hlsearch "highlight matches
+set smartcase
+set ignorecase
+set magic "does magic
 "turn off the highlight
 nnoremap <leader>f :nohlsearch<CR> 
 
