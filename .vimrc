@@ -15,6 +15,8 @@ syntax on
 
 "further referenced as <Leader>, it is a fancy keyword
 let mapleader = "\<Space>"
+"goes to next uppercaseCharacter
+":nmap <leader>w /[A-Z]<CR>:nohlsearch<CR>
 
 "enconding
 set encoding=utf8
@@ -26,6 +28,7 @@ set backspace=indent,eol,start
 "Insert mode, NOn REcursive MAPping
 :inoremap jk <Esc>
 
+set hidden "allows changing from modified buffers without warning
 set tabstop=4 "number of spaces per TAB
 set softtabstop=4 "same as above, but on editing
 set expandtab "make tabs equal to multiple spaces
@@ -42,6 +45,9 @@ set ignorecase
 set magic "does magic
 "turn off the highlight
 nnoremap <leader>f :nohlsearch<CR> 
+
+"hereIsSomeCamelCase huehueheuheuheuehHEEHEHEHEHEhuehueheuheuheuEHEHHEHEHE
+call camelcasemotion#CreateMotionMappings('<leader>')
 
 "move vertically on wrapped lines
 nnoremap j gj
