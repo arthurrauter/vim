@@ -13,6 +13,11 @@ filetype plugin indent on
 "syntax highlighting
 syntax on
 
+"solarized
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+
 "unmaps space
 :nnoremap <space> <nop>
 "further referenced as <Leader>, it is a fancy keyword
@@ -43,7 +48,7 @@ set wildmenu "visual autocomple for command menu
 "set lazyredraw "does not redraws during macros
 set showmatch "highlight matching for brackets {[(
 set incsearch "search as characters are entered
-set hlsearch "highlight matches
+"set hlsearch "highlight matches
 set smartcase
 set ignorecase
 set magic "does magic
