@@ -17,19 +17,18 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 "VIM-SURROUND
 
 "BECAUSE I AM SPECIAL
-:nnoremap <Space> <NOP>
+:set relativenumber
 let mapleader = "\<Space>"
-:nnoremap <leader>r :source ~/.vimrc<CR>
-":nnoremap <leader>r :w<CR>:source ~/.vimrc<CR>
+:nnoremap <leader>r :w<CR>:source $MYVIMRC<CR>
 :nnoremap <leader>f :nohlsearch<CR> 
-:nnoremap <leader>w :w<CR> 
 :nnoremap <leader>s :s/
-"SPLIT CYCLING
+
+"split cycling
 :nnoremap <C-j> <C-w>j
 :nnoremap <C-k> <C-w>k
 :nnoremap <C-h> <C-w>h
 :nnoremap <C-l> <C-w>l
-:nnoremap <C-C-I> <C-w>w
+":nnoremap <C-C-I> <C-w>w
 
 "remaps esc to jk
 "Insert mode, NOn REcursive MAPping
@@ -59,3 +58,45 @@ set hlsearch "highlight matches
 set smartcase
 set ignorecase
 set magic "does magic
+
+"funky MAPPINGS, here we go:
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>Gzz
+"wrap in quotes
+:nnoremap <leader>" ea"<esc>bi"<esc>lel
+"wrap visual selection in quotes
+:vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
+"beginning of the line, end of the line moves
+:nnoremap <leader>l $
+:nnoremap <leader>h ^
+
+:augroup javagroup
+:autocmd!
+:autocmd FileType java :setlocal nonu
+:autocmd FileType java :nnoremap <buffer> <leader>/ 0i//<esc>
+:autocmd InsertLeave * :w
+:autocmd FileType java :iabbrev <buffer> ret return;<left>
+:autocmd FileType java :iabbrev <buffer> CONST public static final;<left>
+:autocmd FileType java :iabbrev <buffer> pub public
+:augroup END
+
+:onoremap <leader>l $
+:onoremap <leader>h 0
+:onoremap in( :<c-u>normal! f(vi(<cr>
+:onoremap an( :<c-u>normal! f(va(<cr>
+
+"au for Markdown {{{
+:augroup markdow
+:autocmd!
+:autocmd FileType markdown :onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
+:autocmd FileType markdown :onoremap ah :<c-u>execute "normal! ?^--\\+$\r:nohlsearch\rkvg_"<cr>
+:augroup END
+"}}}
+
+:onoremap in@ :<c-u>execute "normal! /.@\S*\.\S*\r:noh\rBvt@"<cr>
+
+:set statusline=%f
+:set statusline+=\ 
+:set statusline+=%y
+:set statusline+=\ 
+:set statusline+=%=
+:set statusline+=%l,%c\ (%L)
